@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alberto"
+    }
+  ],
+  "excercises": [
+    {
+      "id": 1,
+      "name": "Press pecho",
+      "lastIncrease": "01/01/2020",
+      "reps": 15,
+      "series": 3,
+      "weight": 10
+    },
+    {
+      "id": 2,
+      "name": "Legg press",
+      "lastIncrease": "01/02/2020",
+      "reps": 12,
+      "series": 2,
+      "weight": 7
+    }
+  ]
+}
