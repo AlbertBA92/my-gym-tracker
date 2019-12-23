@@ -35,7 +35,7 @@ export class NewComponent implements OnInit {
     });
   }
 
-  private save(){
+  public save(){
     const exercise =  <Exercise>this.formGroup.value;
     exercise.lastIncrease = this.datePipe.transform(exercise.lastIncrease, 'dd/MM/yyyy');
     this.apiService.postExcersie(exercise);

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  private remove(id: string) { 
+  public remove(id: string) { 
     console.log(id);
     this.apiService.deleteExercise(id);
   }
