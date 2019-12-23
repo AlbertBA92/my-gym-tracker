@@ -10,7 +10,7 @@ import { Exercise } from './shared/model/exercise.model';
 })
 export class ApiService {
 
-  private SERVER_URL = 'http://localhost:3000/';
+  private SERVER_URL = 'https://exercises-db.herokuapp.com/';
   private EXERCISES_URL = "excercises";
   constructor(private httpClient: HttpClient) { }
 
