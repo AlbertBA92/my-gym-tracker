@@ -1,8 +1,8 @@
 export interface Exercise {
-    id: String;
-    name: String;
-    weight: String;
-    reps: String;
-    series: String;
-    lastIncrease: String;
+    id: string;
+    name: string;
+    weight: string;
+    reps: string;
+    series: string;
+    lastIncrease: string;
   }
