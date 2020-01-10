@@ -25,21 +25,26 @@ export class NewComponent implements OnInit {
     this.buildForm();
   }
 
-  private buildForm(){
+  buildForm(){
     this.formGroup = this.formBuilder.group({
       name: ['', Validators.required],
-      weight: ['', [Validators.required, CustomNumberValidator.numeric]],
+      weight: ['', [Validators.required, CustomNumberValidator.decimal]],
       reps: ['', [Validators.required, CustomNumberValidator.numeric]],
       series: ['', [Validators.required, CustomNumberValidator.numeric]],
       lastIncrease: ['', Validators.required]
     });
   }
 
-  public save(){
+  save(){
     const exercise =  <Exercise>this.formGroup.value;
     exercise.lastIncrease = this.datePipe.transform(exercise.lastIncrease, 'dd/MM/yyyy');
-    this.apiService.postExcersie(exercise);
-    this.router.navigate(['home']);
+    this.apiService.postExcersie(exercise).subscribe(() => {
+        this.router.navigate(['home']);
+      },
+      err => {
+        alert(err.message);
+    });
+    
   }
   
 
