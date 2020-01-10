@@ -5,17 +5,17 @@
             <mat-card-title>Nombre: {{exercise.name}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-           <p>Repeticiones: {{exercise.reps}}</p>
-           <p>Series: {{exercise.series}}</p>
-           <p>Peso: {{exercise.weight}} kg</p>
-           <p>Última subida de peso: {{exercise.lastIncrease}}</p>
-           <a (click) = "remove(exercise.id)"mat-button class="mat-elevation-z4" color="primary">
-                <mat-icon>delete</mat-icon>
-            </a>
+            <p><b>Peso:</b> {{exercise.weight}} kg / <b>Repeticiones:</b> {{exercise.reps}} / <b>Series:</b> {{exercise.series}}</p>
+            
+            <p><b>Última subida de peso:</b> {{exercise.lastIncrease}}</p>
+
+            <mat-card-actions >
+                <a><button (click) = "openDialog(exercise)" mat-raised-button color="primary"><mat-icon>delete</mat-icon></button></a>
+            </mat-card-actions>
             
         </mat-card-content>
-        
     </mat-card>
+
     <a routerLink="/new" mat-button class="mat-fab mat-fab-bottom-right mat-elevation-z4" color="primary">
         <mat-icon>add</mat-icon>
     </a>

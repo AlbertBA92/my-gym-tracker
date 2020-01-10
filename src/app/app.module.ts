@@ -7,17 +7,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MatDialogModule, MAT_DATE_LOCALE } from '@angular/material';
 import { NewComponent } from './new/new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    NewComponent
+    NewComponent,
+    DialogBodyComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +35,13 @@ import { DatePipe } from '@angular/common';
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     DatePipe
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogBodyComponent]
 })
 export class AppModule { }

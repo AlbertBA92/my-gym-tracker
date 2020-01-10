@@ -1,0 +1,12 @@
+<mat-dialog-content>
+    <p>¿Seguro que quiere borrar el ejercicio <b>{{data.name}}</b></p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <mat-card-actions >
+        <a><button (click) = "close()" mat-raised-button>No</button></a>
+        <a><button (click) = "remove(data.id)" mat-raised-button color="primary">Si</button></a>
+    </mat-card-actions>
+</mat-dialog-actions>
+
+
