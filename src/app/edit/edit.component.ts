@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomNumberValidator } from '../shared/validators/CustomNumberValidator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Exercise } from '../shared/model/exercise.model';
+import { DatePipe } from '@angular/common';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-edit',
@@ -16,7 +18,10 @@ export class EditComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datePipe: DatePipe,
+    private apiService: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,12 +33,23 @@ export class EditComponent implements OnInit {
 
   buildForm(){
     this.formGroup = this.formBuilder.group({
+      id: [this.exercise.id],
       name: [this.exercise.name, Validators.required],
       weight: [this.exercise.weight, [Validators.required, CustomNumberValidator.decimal]],
       reps: [this.exercise.reps, [Validators.required, CustomNumberValidator.numeric]],
       series: [this.exercise.series, [Validators.required, CustomNumberValidator.numeric]],
       lastIncrease: [this.exercise.lastIncrease, Validators.required]
     });
+  }
+
+  update(){
+    const exercise =  <Exercise>this.formGroup.value;
+    exercise.lastIncrease = this.datePipe.transform(exercise.lastIncrease, 'dd/MM/yyyy');
+    this.apiService.putExercise(exercise).subscribe(() => {
+      this.router.navigate(['home']);
+    }, err => {
+      console.log(err.me)
+    })
   }
 
 }

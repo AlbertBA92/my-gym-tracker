@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { throwError, Observable } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
 import { Exercise } from '../shared/model/exercise.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,15 @@ export class ApiService {
     });
   }
 
+  public putExercise(exercise: Exercise): Observable<any> {
+    return this.httpClient.put(this.SERVER_URL + this.EXERCISES_URL + "/" + exercise.id, JSON.stringify(exercise), {
+      headers:  { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+       }
+    });
+  }
+
   public deleteExercise(id: string): Observable<any>   {
     return this.httpClient.delete(this.SERVER_URL + this.EXERCISES_URL + "/"+id);
   }
@@ -42,4 +52,7 @@ export class ApiService {
   public getExerciseById(id: number){
     return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL + "/" + id);
   }
+
+  
+
 }
