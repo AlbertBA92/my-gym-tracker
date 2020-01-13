@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Exercise } from '../shared/model/exercise.model';
 import { DatePipe } from '@angular/common';
 import { ApiService } from '../services/api.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit',
@@ -21,7 +22,8 @@ export class EditComponent implements OnInit {
     private route: ActivatedRoute,
     private datePipe: DatePipe,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -46,10 +48,14 @@ export class EditComponent implements OnInit {
     const exercise =  <Exercise>this.formGroup.value;
     exercise.lastIncrease = this.datePipe.transform(exercise.lastIncrease, 'dd/MM/yyyy');
     this.apiService.putExercise(exercise).subscribe(() => {
-      this.router.navigate(['home']);
+      this.router.navigate(['home']).then((navigated: boolean) => {
+        if(navigated){
+          this.snackBar.open("Actualizado correctamente", "Aceptar", {duration: 2000});
+        };
+      });
     }, err => {
-      console.log(err.me)
-    })
+      console.log(err.me);
+    });
   }
 
 }

@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MatDialogModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, 
+  MatInputModule, MatNativeDateModule, MatDatepickerModule, MatDialogModule, MatSnackBarModule } from '@angular/material';
 import { NewComponent } from './new/new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
@@ -38,7 +39,8 @@ import { ResolveHomeExercise } from './services/resolve-home.service';
     MatNativeDateModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     DatePipe,
