@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatDatepickerModule, MatDialogModule, MAT_DATE_LOCALE } from '@angular/material';
 import { NewComponent } from './new/new.component';
@@ -20,7 +19,6 @@ import { ResolveHomeExercise } from './services/resolve-home.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     NewComponent,
     DialogBodyComponent,
     EditComponent
