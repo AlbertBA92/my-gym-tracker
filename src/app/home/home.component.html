@@ -11,6 +11,7 @@
 
             <mat-card-actions >
                 <a><button (click) = "openDialog(exercise)" mat-raised-button color="primary"><mat-icon>delete</mat-icon></button></a>
+                <a [routerLink]="['/edit', exercise.id]" ><button mat-raised-button color="primary"><mat-icon>edit</mat-icon></button></a>
             </mat-card-actions>
             
         </mat-card-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../services/api.service';
 import { Exercise } from '../shared/model/exercise.model';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';

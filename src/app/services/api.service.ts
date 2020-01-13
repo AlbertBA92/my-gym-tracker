@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { throwError, Observable } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
-import { Exercise } from './shared/model/exercise.model';
+import { Exercise } from '../shared/model/exercise.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +37,9 @@ export class ApiService {
 
   public deleteExercise(id: string): Observable<any>   {
     return this.httpClient.delete(this.SERVER_URL + this.EXERCISES_URL + "/"+id);
+  }
+
+  public getExerciseById(id: number){
+    return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL + "/" + id);
   }
 }

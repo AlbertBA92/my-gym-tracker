@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Exercise } from '../shared/model/exercise.model';
-import { ApiService } from  '../api.service';
+import { ApiService } from  '../services/api.service';
 
 @Component({
   selector: 'app-dialog-body',

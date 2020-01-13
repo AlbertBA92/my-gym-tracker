@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomNumberValidator } from '../shared/validators/CustomNumberValidator';
-import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Exercise } from '../shared/model/exercise.model';
 import { DatePipe } from '@angular/common';
 
@@ -23,6 +23,7 @@ export class NewComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+
   }
 
   buildForm(){

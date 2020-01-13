@@ -12,6 +12,8 @@ import { NewComponent } from './new/new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import { EditComponent } from './edit/edit.component';
+import { ResolveEditExerciseService } from './services/resolve-edit-exercise.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { DialogBodyComponent } from './dialog-body/dialog-body.component';
     HomeComponent,
     AboutComponent,
     NewComponent,
-    DialogBodyComponent
+    DialogBodyComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { DialogBodyComponent } from './dialog-body/dialog-body.component';
     MatDialogModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    ResolveEditExerciseService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogBodyComponent]

@@ -1,0 +1,42 @@
+<div style="padding: 13px;">
+        <form [formGroup]="formGroup">
+            <mat-card style="text-align: center;">
+                <mat-card-header>
+                    <mat-card-title>Editar ejercicio {{exercise.name}}</mat-card-title>
+                </mat-card-header>
+    
+                <mat-card-content>
+                    <mat-form-field appearance="legacy">
+                        <input matInput formControlName="name" placeholder="Nombre ejercicio">
+                    </mat-form-field>
+    
+                    <br>
+                    <mat-form-field appearance="legacy">
+                        <input matInput formControlName="weight" placeholder="Peso">
+                    </mat-form-field>
+    
+                    <br>
+                    <mat-form-field appearance="legacy">
+                        <input matInput formControlName="reps" placeholder="Repeticiones">
+                    </mat-form-field>
+    
+                    <br>
+                    <mat-form-field appearance="legacy">
+                        <input matInput formControlName="series" placeholder="Series">
+                    </mat-form-field>
+    
+                    <br>
+                    <mat-form-field>
+                        <input matInput formControlName="lastIncrease" [matDatepicker]="picker" placeholder="Elige una fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    
+                    <br>
+                    <a routerLink="/home"><button mat-button>Cancel</button></a>
+                    <button mat-button (click)="save()" [disabled]="formGroup.invalid">Add</button>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+    
