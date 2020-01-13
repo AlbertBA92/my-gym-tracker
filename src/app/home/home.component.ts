@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Exercise } from '../shared/model/exercise.model';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +14,19 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 export class HomeComponent implements OnInit {
 
   exercises: Exercise[];
-  constructor(private apiService: ApiService, private matDialog: MatDialog) {
-  }
+  constructor(
+    private apiService: ApiService,
+    private matDialog: MatDialog,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.getAllExercises();
   }
 
   getAllExercises(){
-    this.apiService.getExercises().subscribe((data: Exercise[]) => {
-      this.exercises = data;
+    this.route.data.subscribe(response => {
+      this.exercises = response.exercises;
     });
   }
 

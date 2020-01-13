@@ -14,29 +14,25 @@ export class EditComponent implements OnInit {
   public formGroup: FormGroup;
   public exercise: Exercise;
 
-  constructor(private formBuilder: FormBuilder,
-    private route: ActivatedRoute) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.buildForm();
     this.route.data.subscribe(response => {
       this.exercise = response.exercise;
+      this.buildForm();
     });
-    // this.route.params.subscribe(params => {
-    //   this.apiService.getExerciseById(Number.parseInt(params['id'])).subscribe((data: Exercise) => {
-    //     this.exercise = data;
-    //   });
-    // });
-
   }
 
   buildForm(){
     this.formGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      weight: ['', [Validators.required, CustomNumberValidator.decimal]],
-      reps: ['', [Validators.required, CustomNumberValidator.numeric]],
-      series: ['', [Validators.required, CustomNumberValidator.numeric]],
-      lastIncrease: ['', Validators.required]
+      name: [this.exercise.name, Validators.required],
+      weight: [this.exercise.weight, [Validators.required, CustomNumberValidator.decimal]],
+      reps: [this.exercise.reps, [Validators.required, CustomNumberValidator.numeric]],
+      series: [this.exercise.series, [Validators.required, CustomNumberValidator.numeric]],
+      lastIncrease: [this.exercise.lastIncrease, Validators.required]
     });
   }
 

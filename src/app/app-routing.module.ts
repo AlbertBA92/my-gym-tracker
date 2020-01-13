@@ -5,9 +5,12 @@ import { AboutComponent } from './about/about.component';
 import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { ResolveEditExerciseService } from './services/resolve-edit-exercise.service';
+import { ResolveHomeExercise } from './services/resolve-home.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, resolve: {
+      exercises: ResolveHomeExercise
+  } },
   { path: 'about', component: AboutComponent },
   { path: 'new', component: NewComponent },
   { path: 'edit/:id', component: EditComponent, resolve: {

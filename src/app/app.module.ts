@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { EditComponent } from './edit/edit.component';
 import { ResolveEditExerciseService } from './services/resolve-edit-exercise.service';
+import { ResolveHomeExercise } from './services/resolve-home.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ResolveEditExerciseService } from './services/resolve-edit-exercise.ser
   ],
   providers: [
     DatePipe,
-    ResolveEditExerciseService
+    ResolveEditExerciseService,
+    ResolveHomeExercise
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogBodyComponent]

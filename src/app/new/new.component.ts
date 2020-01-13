@@ -28,7 +28,7 @@ export class NewComponent implements OnInit {
 
   buildForm(){
     this.formGroup = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['aaaa', Validators.required],
       weight: ['', [Validators.required, CustomNumberValidator.decimal]],
       reps: ['', [Validators.required, CustomNumberValidator.numeric]],
       series: ['', [Validators.required, CustomNumberValidator.numeric]],
