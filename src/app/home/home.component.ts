@@ -27,13 +27,20 @@ export class HomeComponent implements OnInit {
   getAllExercises(){
     this.route.data.subscribe(response => {
       this.exercises = response.exercises;
+      
     });
   }
 
   openDialog(exercise: Exercise){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = exercise;
-    this.matDialog.open(DialogBodyComponent, dialogConfig).afterClosed().subscribe(() => this.getAllExercises());
+    this.matDialog.open(DialogBodyComponent, dialogConfig).afterClosed().subscribe(
+      () => this.apiService.getExercises().subscribe(data => {
+        console.log("NEW DATA");
+        console.log(data);
+        this.exercises = data as Exercise[];
+      })
+    );
   }
 
 }

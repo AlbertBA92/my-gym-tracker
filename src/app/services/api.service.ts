@@ -1,18 +1,18 @@
-import { Injectable, ɵConsole } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { throwError, Observable } from 'rxjs';
-import { retry, catchError, tap } from 'rxjs/operators';
 import { Exercise } from '../shared/model/exercise.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private SERVER_URL = 'https://exercises-db.herokuapp.com/';
-  private EXERCISES_URL = "excercises";
+  // private SERVER_URL = 'http://localhost:8080/gym-tracker-api/';
+  // private EXERCISES_URL = "exercise";
+  private SERVER_URL = 'https://gym-tracker-bff.herokuapp.com/gym-tracker-api/';
+  private EXERCISES_URL = "exercise";
   constructor(private httpClient: HttpClient) { }
 
   public first: string = "";
@@ -24,14 +24,23 @@ export class ApiService {
   
 
   public getExercises() {
-    return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL);
+    return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL, {
+      headers:  { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+       }
+    });
   }
 
   public postExcersie(exercise: Exercise): Observable<any>  {
     return this.httpClient.post(this.SERVER_URL + this.EXERCISES_URL, JSON.stringify(exercise), {
       headers:  { 
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
        }
     });
   }
@@ -49,10 +58,8 @@ export class ApiService {
     return this.httpClient.delete(this.SERVER_URL + this.EXERCISES_URL + "/"+id);
   }
 
-  public getExerciseById(id: number){
-    return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL + "/" + id);
+  public getExerciseById(id: string) {
+    return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL + "/" + id, {responseType:'json'});
   }
-
-  
 
 }
