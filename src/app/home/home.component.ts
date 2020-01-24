@@ -36,8 +36,6 @@ export class HomeComponent implements OnInit {
     dialogConfig.data = exercise;
     this.matDialog.open(DialogBodyComponent, dialogConfig).afterClosed().subscribe(
       () => this.apiService.getExercises().subscribe(data => {
-        console.log("NEW DATA");
-        console.log(data);
         this.exercises = data as Exercise[];
       })
     );
