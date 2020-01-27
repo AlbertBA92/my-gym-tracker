@@ -37,9 +37,6 @@ export class EditComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       id: [this.exercise.id],
       name: [this.exercise.name, Validators.required],
-      weight: [this.exercise.weight, [Validators.required, CustomNumberValidator.decimal]],
-      reps: [this.exercise.reps, [Validators.required, CustomNumberValidator.numeric]],
-      series: [this.exercise.series, [Validators.required, CustomNumberValidator.numeric]],
       lastIncrease: [this.exercise.lastIncrease, Validators.required]
     });
   }

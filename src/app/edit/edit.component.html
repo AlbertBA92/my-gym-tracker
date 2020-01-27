@@ -11,19 +11,9 @@
                     </mat-form-field>
     
                     <br>
-                    <mat-form-field appearance="legacy">
-                        <input matInput formControlName="weight" placeholder="Peso">
-                    </mat-form-field>
-    
-                    <br>
-                    <mat-form-field appearance="legacy">
-                        <input matInput formControlName="reps" placeholder="Repeticiones">
-                    </mat-form-field>
-    
-                    <br>
-                    <mat-form-field appearance="legacy">
-                        <input matInput formControlName="series" placeholder="Series">
-                    </mat-form-field>
+                    <div *ngFor="let set of exercise.sets">
+                        <p><b>Peso:</b> {{set.weight}} kg / <b>Repeticiones:</b> {{set.reps}} <a [routerLink]="['/edit_set', set.id]" [queryParams]="{exercise_id: exercise.id}"><button mat-button>Edit</button></a></p>
+                    </div>
     
                     <br>
                     <mat-form-field>

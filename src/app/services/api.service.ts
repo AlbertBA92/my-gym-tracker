@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { throwError, Observable } from 'rxjs';
 import { Exercise } from '../shared/model/exercise.model';
+import { Set } from '../shared/model/set.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class ApiService {
   // private EXERCISES_URL = "exercise";
   private SERVER_URL = 'https://gym-tracker-bff.herokuapp.com/gym-tracker-api/';
   private EXERCISES_URL = "exercise";
+  private SET_URL = "set";
+  
   constructor(private httpClient: HttpClient) { }
 
   public first: string = "";
@@ -22,6 +25,8 @@ export class ApiService {
     throwError(error);
   }
   
+
+  // EXERCISE SERVICES
 
   public getExercises() {
     return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL, {
@@ -60,6 +65,21 @@ export class ApiService {
 
   public getExerciseById(id: string) {
     return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL + "/" + id, {responseType:'json'});
+  }
+
+
+  // SET SERVICES
+  public getSetById(id: string) {
+    return this.httpClient.get(this.SERVER_URL + this.SET_URL + "/" + id, {responseType:'json'});
+  }
+
+  public putSet(set: Set): Observable<any> {
+    return this.httpClient.put(this.SERVER_URL + this.SET_URL + "/" + set.id, JSON.stringify(set), {
+      headers:  { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+       }
+    });
   }
 
 }
