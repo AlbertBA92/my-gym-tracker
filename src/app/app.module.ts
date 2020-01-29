@@ -15,7 +15,7 @@ import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { EditComponent } from './edit/edit.component';
 import { ResolveEditExerciseService } from './services/resolve-edit-exercise.service';
 import { ResolveHomeExercise } from './services/resolve-home.service';
-import { EditSetComponent } from './edit-set/edit-set.component';
+import { EditSetComponent } from './shared/edit-set/edit-set.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,7 @@
 <div style="padding: 13px;">
         <form [formGroup]="formGroup">
-            <mat-card style="text-align: center;">
+            <!-- <mat-card style="text-align: center;"> -->
+            <mat-card>
                 <mat-card-header>
                     <mat-card-title>Editar ejercicio {{exercise.name}}</mat-card-title>
                 </mat-card-header>
@@ -11,22 +12,36 @@
                     </mat-form-field>
     
                     <br>
-                    <div *ngFor="let set of exercise.sets">
-                        <p><b>Peso:</b> {{set.weight}} kg / <b>Repeticiones:</b> {{set.reps}} <a [routerLink]="['/edit_set', set.id]" [queryParams]="{exercise_id: exercise.id}"><button mat-button>Edit</button></a></p>
-                    </div>
-    
-                    <br>
                     <mat-form-field>
                         <input matInput formControlName="lastIncrease" [matDatepicker]="picker" placeholder="Elige una fecha">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
-                    
-                    <br>
-                    <a routerLink="/home"><button mat-button>Cancel</button></a>
-                    <button mat-button (click)="update()" [disabled]="formGroup.invalid">Save</button>
+                </mat-card-content>
+
+                <h4>Series</h4>
+                <mat-card-content>
+                    <div *ngFor="let set of exercise.sets">
+                        <span>
+                            <b>Peso:</b> {{set.weight}} kg / 
+                            <b>Repeticiones:</b> {{set.reps}} 
+                            <a><button (click)="callEditComponent(set)" mat-button>Edit</button></a></span>
+                    </div>
+                    <button mat-button class="mat-fab-bottom-right mat-elevation-z4" (click)='showAddSet = !showAddSet'><mat-icon>add</mat-icon></button>
                 </mat-card-content>
             </mat-card>
+
+            <br>
+            <app-edit-set *ngIf='showAddSet' [set]="editSet" [exercise]="exercise" [isNew]="true" (save)="saveSet($event)"></app-edit-set>
+
+            <div>
+                <br>
+                <a routerLink="/home"  mat-button class="mat-fab-bottom-right mat-elevation-z4" color="primary">
+                    <mat-icon>arrow_back</mat-icon>
+                </a>
+                <a><button mat-button class="mat-fab-bottom-right mat-elevation-z4" (click)="update()" [disabled]="formGroup.invalid"><mat-icon>check</mat-icon></button></a>
+            </div>
+            
         </form>
     </div>
     

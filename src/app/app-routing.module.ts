@@ -6,7 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { ResolveEditExerciseService } from './services/resolve-edit-exercise.service';
 import { ResolveHomeExercise } from './services/resolve-home.service';
 import { ResolveEditSetService } from './services/resolve-edit-set.service';
-import { EditSetComponent } from './edit-set/edit-set.component';
+import { EditSetComponent } from './shared/edit-set/edit-set.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, resolve: {
@@ -15,10 +15,7 @@ const routes: Routes = [
   { path: 'new', component: NewComponent },
   { path: 'edit/:id', component: EditComponent, resolve: {
     exercise: ResolveEditExerciseService
-  }},
-  { path: 'edit_set/:id', component: EditSetComponent, resolve: {
-    set: ResolveEditSetService
-  }},
+  } },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 

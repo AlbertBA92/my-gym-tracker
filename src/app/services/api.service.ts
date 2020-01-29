@@ -51,6 +51,7 @@ export class ApiService {
   }
 
   public putExercise(exercise: Exercise): Observable<any> {
+    console.log(exercise);
     return this.httpClient.put(this.SERVER_URL + this.EXERCISES_URL + "/" + exercise.id, JSON.stringify(exercise), {
       headers:  { 
         'Accept': 'application/json',
