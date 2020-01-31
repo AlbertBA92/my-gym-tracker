@@ -39,7 +39,7 @@ export class ApiService {
     });
   }
 
-  public postExcersie(exercise: Exercise): Observable<any>  {
+  public postExercise(exercise: Exercise): Observable<any>  {
     return this.httpClient.post(this.SERVER_URL + this.EXERCISES_URL, JSON.stringify(exercise), {
       headers:  { 
         'Accept': 'application/json',

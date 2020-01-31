@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, 
   MatInputModule, MatNativeDateModule, MatDatepickerModule, MatDialogModule, MatSnackBarModule } from '@angular/material';
-import { NewComponent } from './new/new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
@@ -21,7 +20,6 @@ import { EditSetComponent } from './shared/edit-set/edit-set.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    NewComponent,
     DialogBodyComponent,
     EditComponent,
     EditSetComponent

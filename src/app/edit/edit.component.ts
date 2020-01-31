@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
   public formGroup: FormGroup;
   public exercise: Exercise;
   private showAddSet: boolean;
+  private isNewExercise: boolean;
   private editSet: Set;
 
   constructor(
@@ -30,7 +31,13 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(response => {
-      this.exercise = response.exercise;
+      if(response.exercise != null){
+        this.isNewExercise = false;
+        this.exercise = response.exercise;
+      }else{
+        this.isNewExercise = true;
+        this.exercise = {} as Exercise;
+      }
       this.buildForm();
     });
   }
@@ -44,32 +51,49 @@ export class EditComponent implements OnInit {
     });
   }
 
-  update(){
+  save(){
     const exercise =  <Exercise>this.formGroup.value;
     exercise.lastIncrease = this.datePipe.transform(exercise.lastIncrease, 'dd/MM/yyyy');
-    this.apiService.putExercise(exercise).subscribe(() => {
-      this.router.navigate(['home']).then((navigated: boolean) => {
-        if(navigated){
-          this.snackBar.open("Actualizado correctamente", "Aceptar", {duration: 2000});
-        };
+    if (this.isNewExercise) {
+      exercise.sets = this.exercise.sets;
+      this.apiService.postExercise(exercise).subscribe(() => {
+        this.goBackHome();
+      }, err => {
+        console.log(err.me);
       });
-    }, err => {
-      console.log(err.me);
+    } else {
+      this.apiService.putExercise(exercise).subscribe(() => {
+        this.goBackHome();
+      }, err => {
+        console.log(err.me);
+      });
+    }
+  }
+
+  goBackHome(){
+    this.router.navigate(['home']).then((navigated: boolean) => {
+      if(navigated){
+        this.snackBar.open("Actualizado correctamente", "Aceptar", {duration: 2000});
+      };
     });
   }
 
   saveSet(set: Set){
-    if(set != null){
-      if(set.id == null){
+
+    if (this.exercise.sets == null){
+      this.exercise.sets = new Array<Set>();
+    }
+
+    if (set != null) {
+      if( set.id == null) {
         this.exercise.sets.push(set);
-      }else{
+      } else {
         let itemIndex = this.exercise.sets.findIndex(item => item.id == set.id);
         this.exercise.sets[itemIndex] = set;
       }
     }
     this.showAddSet = false;
   }
-
 
   callEditComponent(set:Set){
     this.editSet = set;
