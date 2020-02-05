@@ -14,11 +14,11 @@ import { Set } from '../shared/model/set.model';
 })
 export class EditComponent implements OnInit {
 
-  public formGroup: FormGroup;
-  public exercise: Exercise;
-  private showAddSet: boolean;
-  private isNewExercise: boolean;
-  private editSet: Set;
+  formGroup: FormGroup;
+  exercise: Exercise;
+  showAddSet: boolean;
+  isNewExercise: boolean;
+  editSet: Set;
 
   constructor(
     private formBuilder: FormBuilder,
