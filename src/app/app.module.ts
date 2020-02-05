@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatFormFieldModule, 
@@ -15,6 +15,9 @@ import { EditComponent } from './edit/edit.component';
 import { ResolveEditExerciseService } from './services/resolve-edit-exercise.service';
 import { ResolveHomeExercise } from './services/resolve-home.service';
 import { EditSetComponent } from './shared/edit-set/edit-set.component';
+import { LoginComponent } from './login/login.component';
+import { HttpInterceptorService } from './shared/services/http.interceptor.service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { EditSetComponent } from './shared/edit-set/edit-set.component';
     HomeComponent,
     DialogBodyComponent,
     EditComponent,
-    EditSetComponent
+    EditSetComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,11 @@ import { EditSetComponent } from './shared/edit-set/edit-set.component';
     MatSnackBarModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
     DatePipe,
     ResolveEditExerciseService,
     ResolveHomeExercise

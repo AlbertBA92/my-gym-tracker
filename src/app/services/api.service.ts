@@ -10,8 +10,7 @@ import { Set } from '../shared/model/set.model';
 })
 export class ApiService {
 
-  // private SERVER_URL = 'http://localhost:8080/gym-tracker-api/';
-  // private EXERCISES_URL = "exercise";
+  //private SERVER_URL = 'http://localhost:8080/gym-tracker-api/';
   private SERVER_URL = 'https://gym-tracker-bff.herokuapp.com/gym-tracker-api/';
   private EXERCISES_URL = "exercise";
   private SET_URL = "set";
@@ -27,14 +26,11 @@ export class ApiService {
   
 
   // EXERCISE SERVICES
-
   public getExercises() {
     return this.httpClient.get(this.SERVER_URL + this.EXERCISES_URL, {
       headers:  { 
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+        'Content-Type': 'application/json'
        }
     });
   }
@@ -43,9 +39,7 @@ export class ApiService {
     return this.httpClient.post(this.SERVER_URL + this.EXERCISES_URL, JSON.stringify(exercise), {
       headers:  { 
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+        'Content-Type': 'application/json'
        }
     });
   }
@@ -82,5 +76,6 @@ export class ApiService {
        }
     });
   }
+
 
 }

@@ -1,0 +1,24 @@
+<div>
+    <form [formGroup]="formGroup">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>LOGIN</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-form-field appearance="legacy">
+                    <input matInput formControlName="username" placeholder="Nombre usuario">
+                </mat-form-field>
+
+                <br>
+                <mat-form-field appearance="legacy">
+                    <input matInput formControlName="password" placeholder="Password">
+                </mat-form-field>
+                
+                <br>
+
+                <button mat-button (click)="handleLogin()" [disabled]="formGroup.invalid">Login</button>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>
